@@ -31,10 +31,12 @@ def getYzmXx(VVV: str, fpdm: str, fphmyzm: str):
         'v': VVV,
         'nowtime': nowtime,
         'area': area,
-        'publickey': ckcode(fpdm, nowtime)
+        'publickey': ckcode(fpdm, nowtime),
+        # 'connection':'close',
     }
     s = requests.session()
     s.headers['user-agent'] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36"
+    s.verify=False
     resp = s.get(url, params=param)
     tmp = resp.text[43:-1]  # 将字符串处理一下 去掉jquery前缀
     res = json.loads(tmp)
@@ -51,3 +53,4 @@ def getYzmXx(VVV: str, fpdm: str, fphmyzm: str):
 
 if __name__ == "__main__":
     print(getYzmXx('V2.0.01_001', '011001900411', '61636940')[0])
+    print(getYzmXx('V2.0.01_001', '013001920011', '07725050')[0])

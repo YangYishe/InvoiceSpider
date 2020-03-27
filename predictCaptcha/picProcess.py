@@ -286,6 +286,7 @@ def get_aim_letters(captcha_data):
     # print(index_sequence)
 
     aim_letter = ""
+    print("all_letters:",all_letters[0][0])
     for i in index_sequence:
         aim_letter += all_letters[0][0][i]
     os.remove(picpath)
